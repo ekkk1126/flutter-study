@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       // google UI, cupetino: apple UI
       home: Scaffold(
         appBar: AppBar(
-          elevation: 1, // 그림자
+          elevation: 0, // 그림자
           title: Text('Hello flutter!'),
           centerTitle: false, // text center 배치
         ),
