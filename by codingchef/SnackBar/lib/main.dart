@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -52,14 +54,29 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        child: Text('GO to the secod page'),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SecondPage()),
-          );
-        },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            child: Text('Go to the Second Page'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondPage()),
+              );
+            },
+          ),
+          SizedBox(height: 16),
+          ElevatedButton(
+            child: Text('MyButton'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyButton()),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -123,6 +140,106 @@ class ThirdPage extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  const MyButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('MyButton'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                print('text button');
+              },
+              child: Text(
+                'Text Button',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
+              style: TextButton.styleFrom(
+                  primary: Colors.yellow, backgroundColor: Colors.redAccent),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print('Elevated BTN');
+              },
+              child: Text('Elavated BTN'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 0.0,
+              ),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                print('Outlined BTN');
+              },
+              child: Text('Outline BTN'),
+              style: OutlinedButton.styleFrom(
+                  primary: Colors.blue,
+                  side: BorderSide(
+                    color: Colors.black87,
+                    width: 2.0,
+                  )),
+            ),
+            TextButton.icon(
+              onPressed: () {
+                print('Icon BTN');
+              },
+              icon: Icon(
+                Icons.home,
+                size: 30.0,
+                color: Colors.black87,
+              ),
+              label: Text('Go Home'),
+              style: TextButton.styleFrom(
+                primary: Colors.purple,
+                backgroundColor: Colors.yellowAccent,
+                minimumSize: Size(200, 50),
+              ),
+            ),
+            ElevatedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                Icons.home,
+                size: 30.0,
+                color: Colors.black87,
+              ),
+              label: Text('Go Home -NULL'),
+              style: TextButton.styleFrom(
+                  primary: Colors.black, onSurface: Colors.pink),
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              buttonPadding: EdgeInsets.all(20),
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text('TextButtonBar'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Elevated-BTNBar'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
