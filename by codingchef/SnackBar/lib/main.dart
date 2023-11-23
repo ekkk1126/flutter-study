@@ -90,33 +90,39 @@ class SecondPage extends StatelessWidget {
 class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Third Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              '3. 좋아요를 취소하시겠습니까?',
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.redAccent,
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('좋아요가 취소되었습니다.'),
-                    duration: Duration(seconds: 3),
+    return ScaffoldMessenger(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Third Page'),
+        ),
+        body: Builder(
+          builder: (context) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '3. 좋아요를 취소하시겠습니까?',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.redAccent,
+                    ),
                   ),
-                );
-              },
-              child: Text('취소'),
-            )
-          ],
+                  ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('좋아요가 취소되었습니다.'),
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
+                    },
+                    child: Text('취소'),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
