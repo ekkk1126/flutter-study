@@ -1,5 +1,5 @@
-import 'dart:html';
-
+// import 'dart:html';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -76,6 +76,15 @@ class HomeBody extends StatelessWidget {
               );
             },
           ),
+          ElevatedButton(
+            onPressed: () {
+              showToast();
+            },
+            child: Text('Toast'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+            ),
+          ),
         ],
       ),
     );
@@ -129,13 +138,20 @@ class ThirdPage extends StatelessWidget {
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('좋아요가 취소되었습니다.'),
+                          content: Text(
+                            '좋아요가 취소되었습니다.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          backgroundColor: Colors.teal,
                           duration: Duration(seconds: 3),
                         ),
                       );
                     },
                     child: Text('취소'),
-                  )
+                  ),
                 ],
               ),
             );
@@ -244,4 +260,12 @@ class MyButton extends StatelessWidget {
       ),
     );
   }
+}
+
+void showToast() {
+  Fluttertoast.showToast(
+    msg: 'This is Toast!!',
+    gravity: ToastGravity.BOTTOM,
+    toastLength: Toast.LENGTH_SHORT,
+  );
 }
