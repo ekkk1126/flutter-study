@@ -19,13 +19,12 @@ class MyApp extends StatelessWidget {
 
 class MyPage extends StatelessWidget {
   const MyPage({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.blue,
-        body: Container(
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      body: SafeArea(
+        child: Container(
           color: Colors.redAccent,
           width: 100,
           height: 100,
