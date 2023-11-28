@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:navigator/ScreenA.dart';
+import 'package:navigator/ScreenB.dart';
+import 'package:navigator/ScrennC.dart';
 
 void main() => runApp(MyAPP());
 
@@ -8,52 +11,12 @@ class MyAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FirstPage(),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('First page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Go to the Second Page'),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) {
-              return SecondPage();
-            }));
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context2) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Go to the First Page'),
-          onPressed: () {
-            Navigator.pop(context2);
-          },
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => ScreenA(),
+        '/b': (context) => ScreenB(),
+        '/c': (context) => ScreenC(),
+      },
     );
   }
 }
