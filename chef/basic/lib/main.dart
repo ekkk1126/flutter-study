@@ -8,11 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Appbar',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyPage(),
+      title: 'Toast',
+      home: MyPage(),
     );
   }
 }
@@ -25,17 +24,21 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Toast message'),
+        backgroundColor: Colors.blue,
         centerTitle: true,
       ),
       body: Center(
         child: TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue),
-          ),
           onPressed: () {
             flutterToast();
           },
-          child: const Text('Toast'),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blue),
+          ),
+          child: const Text(
+            'Toast',
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
     );
@@ -44,7 +47,7 @@ class MyPage extends StatelessWidget {
 
 void flutterToast() {
   Fluttertoast.showToast(
-    msg: 'Flutter',
+    msg: 'Flt',
     gravity: ToastGravity.BOTTOM,
     backgroundColor: Colors.redAccent,
     fontSize: 20.0,
