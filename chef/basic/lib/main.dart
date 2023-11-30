@@ -1,5 +1,7 @@
+import 'package:basic/ScreenB.dart';
+import 'package:basic/ScreenC.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'ScreenA.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,50 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Toast',
-      home: MyPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const ScreenA(),
+        '/b': (context) => const ScreenB(),
+        '/c': (context) => const ScreenC(),
+      },
     );
   }
-}
-
-class MyPage extends StatelessWidget {
-  const MyPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Toast message'),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-      ),
-      body: Center(
-        child: TextButton(
-          onPressed: () {
-            flutterToast();
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue),
-          ),
-          child: const Text(
-            'Toast',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-void flutterToast() {
-  Fluttertoast.showToast(
-    msg: 'Flt',
-    gravity: ToastGravity.BOTTOM,
-    backgroundColor: Colors.redAccent,
-    fontSize: 20.0,
-    textColor: Colors.white,
-    toastLength: Toast.LENGTH_SHORT,
-  );
 }
